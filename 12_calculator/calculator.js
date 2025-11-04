@@ -41,3 +41,7 @@ module.exports = {
   power,
   factorial
 };
+
+
+
+replace(/[a^-z0-9áéíóúüñ]/gi, "")
