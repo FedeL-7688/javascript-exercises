@@ -1,24 +1,18 @@
-const test1 = {
-  try: 44,
-};
-
 const contains = function (obj, val) {
-  if (typeof obj !== "object") return false
-  
+  if (typeof obj !== "object") return false;
+
   objArr = Object.values(obj);
 
-  if (objArr.includes(val)) return true;
-  else
-    for (const key of objArr) {
-      if (typeof key === "object") {
-        if( contains(key, val)===true)return true;
-       
-      }
+  for (const key of objArr) {
+    if (Number.isNaN(key) && Number.isNaN(val)) return true;
+    else if (key === val) return true;
+    else if (typeof key === "object" && key !== null) {
+      if (contains(key, val) === true) return true;
     }
+  }
 
   return false;
 };
 
-console.log(contains(test1, 44));
 // Do not edit below this line
 module.exports = contains;
